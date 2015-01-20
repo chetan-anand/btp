@@ -1,10 +1,7 @@
-#include<iostream>
-#include<algorithm>
-#include<vector>
-#include<stdio.h>
-#include<strings.h>
-#include<limits.h>
-#include<string.h>
+#include<bits/stdc++.h>
+#include "cpop.h"
+#include "heft.h"
+
 using namespace std;
 typedef long long ll;
 typedef unsigned long long llu;
