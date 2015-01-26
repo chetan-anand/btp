@@ -1,10 +1,4 @@
-#include<iostream>
-#include<algorithm>
-#include<vector>
-#include<stdio.h>
-#include<strings.h>
-#include<limits.h>
-#include<string.h>
+#include<bist/stdc++.h>
 using namespace std;
 typedef long long ll;
 typedef unsigned long long llu;
