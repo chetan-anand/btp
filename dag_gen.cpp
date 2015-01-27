@@ -39,11 +39,13 @@ bool randBool()
 }
 void dagGen(int tc)
 {
-	ofstream myfile;
+	ofstream myfile,dot;
 	myfile.open("test.txt");
+	dot.open("graph1.gv");
 	for(int k=1;k<=tc;k++)
 	{
 		myfile<<"#test_"<<k<<endl;
+		dot<<"digraph G {"<<endl;
 		for(int i=1;i<=nodesNum;i++)
 		{
 			bool flag=false;
@@ -52,12 +54,18 @@ void dagGen(int tc)
 				if(randBool())
 				{
 					myfile<<i<<"->"<<j<<endl;
+					dot<<i<<"->"<<j<<endl;
 					flag=true;
 				}
 			}
 			if(!flag)
+			{
 				myfile<<i<<"->"<<"0"<<endl;
+				dot<<i<<"->"<<"0"<<endl;	
+			}
+				
 		}
+		dot<<"}"<<endl;
 	}
 
 }
@@ -65,6 +73,6 @@ void dagGen(int tc)
 int main()
 {
 	nodesNum=10;
-	dagGen(10);
+	dagGen(1);
 	return 0;
 }
