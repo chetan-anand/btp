@@ -55,7 +55,7 @@ void dagGen(int tc)
 					flag=true;
 				}
 			}
-			if(flag)
+			if(!flag)
 				myfile<<i<<"->"<<"0"<<endl;
 		}
 	}
