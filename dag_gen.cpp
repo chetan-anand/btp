@@ -52,7 +52,7 @@ void dagGen(int tc)
 			int cntChild=0;
 			for(int j=i+1;j<=nodesNum;j++)
 			{
-				if(cntChild>numChild)
+				if(cntChild>=numChild)
 				{
 					break;
 				}
@@ -78,7 +78,16 @@ void dagGen(int tc)
 
 int main()
 {
-	nodesNum=10;
+	int tc;
+	cout<<"Number of test cases to generate: ";
+	cin>>tc;
+	cout<<endl;
+	cout<<"Enter number of task nodes: ";
+	cin>>nodesNum;
+	cout<<endl;
+	cout<<"Enter maximum number of children a task node can have: ";
+	cin>>numChild;
+	cout<<endl;
 	dagGen(1);
 	return 0;
 }
