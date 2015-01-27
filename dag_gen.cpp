@@ -49,13 +49,19 @@ void dagGen(int tc)
 		for(int i=1;i<=nodesNum;i++)
 		{
 			bool flag=false;
+			int cntChild=0;
 			for(int j=i+1;j<=nodesNum;j++)
 			{
+				if(cntChild>numChild)
+				{
+					break;
+				}
 				if(randBool())
 				{
 					myfile<<i<<"->"<<j<<endl;
 					dot<<i<<"->"<<j<<endl;
 					flag=true;
+					cntChild++;
 				}
 			}
 			if(!flag)
