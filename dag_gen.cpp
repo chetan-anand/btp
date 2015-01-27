@@ -18,3 +18,23 @@ typedef pair <int,int> pii;
 #define fd(i,n,a) for(int i=n;i>=a;i--)
 #define input(f) freopen("f.txt","r",stdin)
 #define line cout<<"\n-----------------------------------------"<<endl
+
+
+/*
+	DAG parameters
+	-----------------------------------------
+	1.	Number of nodes
+	2.	Number of Levels in DAG
+	3.	Number of children
+	4.	Number of parents
+*/
+int nodesNum;			//Number of nodes
+int level;				//Levels of DAG
+int numChild			//Number of children
+int numParent			//Numbers of parents
+void dagGen()
+{
+	ofstream myfile;
+	myfile.open("test.txt");
+
+}
