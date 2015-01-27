@@ -30,11 +30,37 @@ typedef pair <int,int> pii;
 */
 int nodesNum;			//Number of nodes
 int level;				//Levels of DAG
-int numChild			//Number of children
-int numParent			//Numbers of parents
-void dagGen()
+int numChild;			//Number of children
+int numParent;			//Numbers of parents
+
+bool randBool()
+{
+	return rand()%2;
+}
+void dagGen(int tc)
 {
 	ofstream myfile;
 	myfile.open("test.txt");
+	for(int k=1;k<=tc;k++)
+	{
+		myfile<<"#test_"<<k<<endl;
+		for(int i=1;i<nodesNum;i++)
+		{
+			for(int j=i+1;j<=nodesNum;j++)
+			{
+				if(randBool())
+				{
+					myfile<<i<<"->"<<j<<endl;
+				}
+			}
+		}
+	}
 
+}
+
+int main()
+{
+	nodesNum=10;
+	dagGen(10);
+	return 0;
 }
