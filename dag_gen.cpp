@@ -33,10 +33,16 @@ int level;				//Levels of DAG
 int numChild;			//Number of children
 int numParent;			//Numbers of parents
 
-bool randBool()
+bool randBool(int prob)
 {
-	return rand()%2;
+	srand(time(NULL));
+	int temp=rand()%100 + 1;
+	if(temp<=prob)
+		return true;
+	else
+		return false;
 }
+
 void dagGen(int tc)
 {
 	ofstream myfile,dot;
@@ -56,7 +62,7 @@ void dagGen(int tc)
 				{
 					break;
 				}
-				if(randBool())
+				if(randBool(50))
 				{
 					myfile<<i<<"->"<<j<<endl;
 					dot<<i<<"->"<<j<<endl;
