@@ -1,5 +1,8 @@
 #include<bits/stdc++.h>
+#include <string>
 using namespace std;
+#include <sstream>
+
 
 typedef long long ll;
 typedef unsigned long long llu;
@@ -46,11 +49,14 @@ bool randBool(int prob)
 void dagGen(int tc)
 {
 	ofstream myfile,dot;
-	myfile.open("test.txt");
-	dot.open("graph1.gv");
+	myfile.open("test2.txt");
+	dot.open("graph2.gv");
 	for(int k=1;k<=tc;k++)
 	{
-		myfile<<"#test_"<<k<<endl;
+		srand(k);
+		myfile<<"#"<<endl;
+		myfile<<k<<endl;
+		myfile<<"#"<<endl;
 		dot<<"digraph G {"<<endl;
 		for(int i=1;i<=nodesNum;i++)
 		{
@@ -58,11 +64,12 @@ void dagGen(int tc)
 			int cntChild=0;
 			for(int j=i+1;j<=nodesNum;j++)
 			{
+				
 				if(cntChild>=numChild)
 				{
 					break;
 				}
-				if(randBool(50))
+				if(rand()%2)
 				{
 					myfile<<i<<"->"<<j<<endl;
 					dot<<i<<"->"<<j<<endl;
@@ -77,9 +84,12 @@ void dagGen(int tc)
 			}
 				
 		}
+		//myfile<<"#"<<endl;
 		dot<<"}"<<endl;
+		dot<<endl;
+		
 	}
-
+	dot.close();
 }
 
 int main()
@@ -87,13 +97,13 @@ int main()
 	int tc;
 	cout<<"Number of test cases to generate: ";
 	cin>>tc;
-	cout<<endl;
+	//cout<<endl;
 	cout<<"Enter number of task nodes: ";
 	cin>>nodesNum;
-	cout<<endl;
+	//cout<<endl;
 	cout<<"Enter maximum number of children a task node can have: ";
 	cin>>numChild;
-	cout<<endl;
-	dagGen(1);
+	//cout<<endl;
+	dagGen(tc);
 	return 0;
 }

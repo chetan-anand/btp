@@ -9,4 +9,5 @@ Dag generator parameters:-
 
 Sub-parameters which can also control the above parameters
 -------------------------------------------------------------
-1. Number of children
+1.	Max number of children of each node.
+

@@ -1,4 +1,4 @@
-#include<bist/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 typedef unsigned long long llu;
@@ -29,11 +29,15 @@ struct node                         // Structure of node in dag
     int key;
     int ranku;
     int cost;
+    int coreid;
+    int avgcost;
     node()
     {
         key=0;
         ranku=0;
         cost=0;
+        coreid=0;
+        avgcost=0;
     }
 };
 
@@ -142,12 +146,7 @@ int upward_rank(int root)
 }
 
 //////////////////////////////////////////////////////////////////////////////////
-void init_core(int idx)
-{
-    line;
 
-
-}
 
 void exec(int idx)
 {
@@ -236,6 +235,21 @@ void display()
     }
     
 }
+
+void init_core()
+{
+    for(int i=1;i<=3;i++)
+    {
+        core temp;
+        temp.id=i;
+        temp.status=false;
+        temp.speed=1<<(i-1);
+        temp.EST=0;
+        temp.EFT=0;
+        cores.push_back(temp);
+    }
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////
 int main()
 {
@@ -243,21 +257,12 @@ int main()
     //////////////////////////////////////////////////////////////
     for(int i=1;i<=5;i++)
     {
-        nodes[i].cost=1+rand()%5;
+        nodes[i].cost=(1+rand()%5)*4;
         nodes[i].key=i;
         cout<<"Index="<<i<<" "<<"Cost="<<nodes[i].cost<<endl;
     }
 
-    for(int i=1;i<=3;i++)
-    {
-        core temp;
-        temp.id=i;
-        temp.status=false;
-        temp.speed=i;
-        temp.EST=0;
-        temp.EFT=0;
-        cores.push_back(temp);
-    }
+    
     /////////////////////////////////////////////////////////////
     //line;
     adj[1].push_back(2);
@@ -277,6 +282,13 @@ int main()
         cout<<endl;
     }
     cout<<"\n-----------------------------------------"<<endl;;
+
+
+    init_core();
+    for(int i=0;i<cores.size();i++)
+    {
+        cout<<cores[i].id<<" "<<cores[i].speed<<endl;
+    }
 
 
     heft_algo();
