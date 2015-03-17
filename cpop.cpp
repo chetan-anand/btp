@@ -28,22 +28,26 @@ struct node                         // Structure of node in dag
 {
     int key;
     int ranku;
+    int rankd;
     int cost;
     int coreid;
-    int avgcost;
+    double avgcost;
     node()
     {
         key=0;
         ranku=0;
+        rankd=0;
         cost=0;
         coreid=0;
-        avgcost=0;
+        avgcost=0.0;
     }
 };
 
-struct slist                        // sorted list structure of task node in dag according to their upward rank
+/*sorted list structure of task node in dag according to their upward rank and downward rank*/
+struct slist
 {
     int ranku;
+    int rankd;
     int key;
 };
 
@@ -166,44 +170,11 @@ void exec(int idx)
     line;
 }
 /////////////////////////////////////////////////////////////
-/*Implementing HEFT heuristics algorithm*/
+/*Implementing CPOP heuristics*/
 
-void heft_algo()
+void cpop_run()
 {
-    vector<int> root;
-    root=find_root();
-    cout<<"Roots are:"<<endl;
 
-    for(int i=0;i<root.size();i++)
-    {
-        cout<<root[i]<<endl;
-    }
-
-    line;
-    for(int i=0;i<root.size();i++)
-    {
-        upward_rank(root[i]);
-    }
-
-    for(int i=1;i<=5;i++)
-    {
-        cout<<"Index="<<i<<" "<<nodes[i].ranku<<endl;
-    }
-
-    line;
-
-    for(int i=1;i<=n;i++)
-    {
-        sorted_list[i].key=i;
-        sorted_list[i].ranku=nodes[i].ranku;
-    }
-
-    sort(sorted_list+1,sorted_list+n,comp);
-
-    for(int i=1;i<=n;i++)
-    {
-        exec(sorted_list[i].key);
-    }
 }
 
 
@@ -233,7 +204,7 @@ void display()
         }
         cout<<endl;
     }
-    
+
 }
 
 void init_core()
@@ -250,10 +221,10 @@ void init_core()
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////////////
+
 int main()
 {
-    n=5;
+    n=3;
     //////////////////////////////////////////////////////////////
     for(int i=1;i<=5;i++)
     {
@@ -262,7 +233,7 @@ int main()
         cout<<"Index="<<i<<" "<<"Cost="<<nodes[i].cost<<endl;
     }
 
-    
+
     /////////////////////////////////////////////////////////////
     //line;
     adj[1].push_back(2);
@@ -271,7 +242,8 @@ int main()
     adj[2].push_back(4);
     adj[3].push_back(5);
     adj[4].push_back(5);
-    cout<<"\n-----------------------------------------"<<endl;;
+    line;
+
     for(int i=1;i<=5;i++)
     {
         cout<<i<<": ";
@@ -281,18 +253,13 @@ int main()
         }
         cout<<endl;
     }
-    cout<<"\n-----------------------------------------"<<endl;;
-
+    line;
 
     init_core();
     for(int i=0;i<cores.size();i++)
     {
         cout<<cores[i].id<<" "<<cores[i].speed<<endl;
     }
-
-
-    heft_algo();
-    //display();
 
     return 0;
 }

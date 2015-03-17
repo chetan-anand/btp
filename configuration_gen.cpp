@@ -1,4 +1,5 @@
 /*
+
 Generating random cost configuration models of the computing resources from the folloying given formula
 
 y = a*x^n + c 
@@ -28,5 +29,22 @@ int main()
 	int a,c,n,x;
 	a=1;
 	c=
+=======
+Cost configuration equation
+y= a*x^n + c
+
+where:- 
+y = per unit cost of using the particular computing resources
+x =	
+n = Degree of cost equation
+c =  
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int 
+
 	return 0;
 }

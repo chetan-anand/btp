@@ -20,6 +20,9 @@ typedef pair <int,int> pii;
 #define MAX 110000    // Maximum number of task nodes in DAG
 #define MAXP 4
 
+
+
+
 ///////////////////////////////////////////////////////////////////////////////
 int n;                              //Number of nodes in DAG
 int size_core;                      //Total number of core in machine
@@ -30,14 +33,14 @@ struct node                         // Structure of node in dag
     int ranku;
     int cost;
     int coreid;
-    int avgcost;
+    double avgcost;
     node()
     {
         key=0;
         ranku=0;
         cost=0;
         coreid=0;
-        avgcost=0;
+        avgcost=0.0;
     }
 };
 
@@ -145,6 +148,7 @@ int upward_rank(int root)
     return nodes[root].ranku;
 }
 
+int 
 //////////////////////////////////////////////////////////////////////////////////
 
 
@@ -248,6 +252,19 @@ void init_core()
         temp.EFT=0;
         cores.push_back(temp);
     }
+}
+
+/*Task Graph Module and processor set module*/
+void build_task_graph()
+{
+    ifstream input1,input2;
+    input1.open("input1.txt");
+    
+}
+
+void build_processor_system()
+{
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
