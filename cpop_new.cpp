@@ -20,6 +20,9 @@ typedef pair <int,int> pii;
 #define MAX 110000    // Maximum number of task nodes in DAG
 #define MAXP 4
 
+
+
+
 ///////////////////////////////////////////////////////////////////////////////
 int n;                              //Number of nodes in DAG
 int size_core;                      //Total number of core in machine
@@ -28,26 +31,28 @@ struct node                         // Structure of node in dag
 {
     int key;
     int ranku;
-    int rankd;
     int cost;
     int coreid;
     double avgcost;
+    bool status;
+    double EST;
+    double EFT;
     node()
     {
         key=0;
         ranku=0;
-        rankd=0;
         cost=0;
         coreid=0;
         avgcost=0.0;
+        status=false;
+        EST=0.0;
+        EFT=0.0;
     }
 };
 
-/*sorted list structure of task node in dag according to their upward rank and downward rank*/
-struct slist
+struct slist                        // sorted list structure of task node in dag according to their upward rank
 {
     int ranku;
-    int rankd;
     int key;
 };
 
@@ -56,8 +61,14 @@ struct core
     int id;
     bool status;                // busy or ideal
     int speed;                  // speed of processor
-    int EST;                    // Earliest start time
-    int EFT;                    // Earliest finish time
+    double EST;                    // Earliest start time
+    double EFT;                    // Earliest finish time
+    core()
+    {
+        status=false;
+        EST=0.0;
+        EFT=0.0;
+    }
 };
 
 struct schedule
@@ -128,6 +139,22 @@ bool compp(core c1,core c2)
     }
     return false;
 }
+
+class Compare
+{
+public:
+    bool operator() (node node1, node node2)
+    {
+        if(node1.ranku!=node2.ranku)
+        {
+            return node1.ranku<node2.ranku;
+        }
+        else
+        {
+            return node1.key<node2.key;
+        }
+    }
+};
 /////////////////////////////////////////////////////////////////////////////////
 /*Calculation upward rank of each task node: O(n)*/
 
@@ -149,82 +176,82 @@ int upward_rank(int root)
     return nodes[root].ranku;
 }
 
+
 //////////////////////////////////////////////////////////////////////////////////
 
-
-void exec(int idx)
+void display()
 {
-    cout<<"Key="<<nodes[idx].key<<" "<<"Cost="<<nodes[idx].ranku<<endl;
-    //cout<<"time take="<<
-    //map_core(idx);
-    sort(cores.begin(),cores.end(),compp);
-    int last=cores.size()-1;
-    schedule temp;
-    temp.processor=cores[last].id;
-    temp.task=idx;
-    temp.start=cores[last].EST;
-    temp.end=temp.start+nodes[idx].cost;
-    cores[last].EST=temp.end;
-    sch.push_back(temp);
-    cout<<"Proccessor id="<<temp.processor<<" task="<<temp.task<<" cost="<<nodes[idx].cost<<" start="<<temp.start<<" end="<<temp.end<<endl;
+    line;
+    for(int i=0;i<sch.size();i++)
+    {
+        cout<<"task ="<<sch[i].task<<" : processor ="<<sch[i].processor<<" : start="<<sch[i].start<<" : end="<<sch[i].end<<endl;
+    }
     line;
 }
+
 /////////////////////////////////////////////////////////////
-/*Implementing CPOP heuristics*/
+/*Implementing HEFT heuristics algorithm*/
 
-void cpop_run()
+void cpop_algo()
 {
+    vector<int> root;
+    root=find_root();
+    cout<<"Roots are:"<<endl;
 
+    for(int i=0;i<root.size();i++)
+    {
+        cout<<root[i]<<endl;
+    }
+
+    line;
+    int temp_root;
+    for(int i=0;i<root.size();i++)
+    {
+        upward_rank(root[i]);
+        temp_root=root[i];
+    }
+
+    for(int i=1;i<=5;i++)
+    {
+        cout<<"Index="<<i<<" "<<nodes[i].ranku<<endl;
+    }
+
+    line;
+
+    for(int i=1;i<=n;i++)
+    {
+        sorted_list[i].key=i;
+        sorted_list[i].ranku=nodes[i].ranku;
+    }
+
+    sort(sorted_list+1,sorted_list+n,comp);
+
+    
+    display();
 }
+
+
 
 
 ////////////////////////////////////////////////////////
-void display()
-{
-    cout<<" ";
-    for(int i=0;i<=10;i++)
-    {
-        cout<<"  "<<i;
-    }
-    cout<<endl;
-    for(int j=1;j<=3;j++)
-    {
-        cout<<j;
-        for(int i=0;i<sch.size();i++)
-        {
-            if(sch[i].processor==j)
-            {
-                for(int j=0;j<sch[i].start;j++)
-                    cout<<"  ";
-                for(int j=sch[i].start;j<=sch[i].end;j++)
-                {
-                    cout<<" "<<sch[j].task;
-                }
-            }
-        }
-        cout<<endl;
-    }
 
-}
 
 void init_core()
 {
-    for(int i=1;i<=3;i++)
+    for(int i=0;i<3;i++)
     {
         core temp;
         temp.id=i;
-        temp.status=false;
-        temp.speed=1<<(i-1);
-        temp.EST=0;
-        temp.EFT=0;
+        temp.speed=i+1;
         cores.push_back(temp);
     }
 }
 
 
+////////////////////////////////////////////////////////////////////////////////////////
 int main()
 {
-    n=3;
+    n=5;
     //////////////////////////////////////////////////////////////
     for(int i=1;i<=5;i++)
     {
@@ -233,7 +260,7 @@ int main()
         cout<<"Index="<<i<<" "<<"Cost="<<nodes[i].cost<<endl;
     }
 
-
+    
     /////////////////////////////////////////////////////////////
     //line;
     adj[1].push_back(2);
@@ -260,6 +287,11 @@ int main()
     {
         cout<<cores[i].id<<" "<<cores[i].speed<<endl;
     }
+    line;
+
+
+    heft_algo();
+    //display();
 
     return 0;
 }
