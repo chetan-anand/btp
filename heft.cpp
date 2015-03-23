@@ -148,7 +148,10 @@ int upward_rank(int root)
     return nodes[root].ranku;
 }
 
-int 
+int downward_rank(int root)
+{
+
+}
 //////////////////////////////////////////////////////////////////////////////////
 
 
@@ -237,7 +240,7 @@ void display()
         }
         cout<<endl;
     }
-    
+
 }
 
 void init_core()
@@ -259,7 +262,7 @@ void build_task_graph()
 {
     ifstream input1,input2;
     input1.open("input1.txt");
-    
+
 }
 
 void build_processor_system()
@@ -279,7 +282,7 @@ int main()
         cout<<"Index="<<i<<" "<<"Cost="<<nodes[i].cost<<endl;
     }
 
-    
+
     /////////////////////////////////////////////////////////////
     //line;
     adj[1].push_back(2);

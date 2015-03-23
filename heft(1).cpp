@@ -20,6 +20,9 @@ typedef pair <int,int> pii;
 #define MAX 110000    // Maximum number of task nodes in DAG
 #define MAXP 4
 
+
+
+
 ///////////////////////////////////////////////////////////////////////////////
 int n;                              //Number of nodes in DAG
 int size_core;                      //Total number of core in machine
@@ -28,7 +31,6 @@ struct node                         // Structure of node in dag
 {
     int key;
     int ranku;
-    int rankd;
     int cost;
     int coreid;
     double avgcost;
@@ -36,7 +38,6 @@ struct node                         // Structure of node in dag
     {
         key=0;
         ranku=0;
-        rankd=0;
         cost=0;
         coreid=0;
         avgcost=0.0;
@@ -149,14 +150,34 @@ int upward_rank(int root)
     return nodes[root].ranku;
 }
 
+int downward_rank(int root)
+{
+
+}
 //////////////////////////////////////////////////////////////////////////////////
 
 
-
+void exec(int idx)
+{
+    cout<<"Key="<<nodes[idx].key<<" "<<"Cost="<<nodes[idx].ranku<<endl;
+    //cout<<"time take="<<
+    //map_core(idx);
+    sort(cores.begin(),cores.end(),compp);
+    int last=cores.size()-1;
+    schedule temp;
+    temp.processor=cores[last].id;
+    temp.task=idx;
+    temp.start=cores[last].EST;
+    temp.end=temp.start+nodes[idx].cost;
+    cores[last].EST=temp.end;
+    sch.push_back(temp);
+    cout<<"Proccessor id="<<temp.processor<<" task="<<temp.task<<" cost="<<nodes[idx].cost<<" start="<<temp.start<<" end="<<temp.end<<endl;
+    line;
+}
 /////////////////////////////////////////////////////////////
-/*Implementing CPOP heuristics*/
+/*Implementing HEFT heuristics algorithm*/
 
-void cpop_run()
+void heft_algo()
 {
     vector<int> root;
     root=find_root();
@@ -168,9 +189,30 @@ void cpop_run()
     }
 
     line;
-    upward_rank(root[i]);
+    for(int i=0;i<root.size();i++)
+    {
+        upward_rank(root[i]);
+    }
 
+    for(int i=1;i<=5;i++)
+    {
+        cout<<"Index="<<i<<" "<<nodes[i].ranku<<endl;
+    }
 
+    line;
+
+    for(int i=1;i<=n;i++)
+    {
+        sorted_list[i].key=i;
+        sorted_list[i].ranku=nodes[i].ranku;
+    }
+
+    sort(sorted_list+1,sorted_list+n,comp);
+
+    for(int i=1;i<=n;i++)
+    {
+        exec(sorted_list[i].key);
+    }
 }
 
 
@@ -217,10 +259,23 @@ void init_core()
     }
 }
 
+/*Task Graph Module and processor set module*/
+void build_task_graph()
+{
+    ifstream input1,input2;
+    input1.open("input1.txt");
 
+}
+
+void build_processor_system()
+{
+
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
 int main()
 {
-    n=3;
+    n=5;
     //////////////////////////////////////////////////////////////
     for(int i=1;i<=5;i++)
     {
@@ -238,8 +293,7 @@ int main()
     adj[2].push_back(4);
     adj[3].push_back(5);
     adj[4].push_back(5);
-    line;
-
+    cout<<"\n-----------------------------------------"<<endl;;
     for(int i=1;i<=5;i++)
     {
         cout<<i<<": ";
@@ -249,7 +303,8 @@ int main()
         }
         cout<<endl;
     }
-    line;
+    cout<<"\n-----------------------------------------"<<endl;;
+
 
     init_core();
     for(int i=0;i<cores.size();i++)
@@ -257,7 +312,9 @@ int main()
         cout<<cores[i].id<<" "<<cores[i].speed<<endl;
     }
 
-    line;
-    cpop_run();
+
+    //heft_algo();
+    //display();
+
     return 0;
 }
