@@ -33,9 +33,10 @@ int level;				//Levels of DAG
 int numChild;			//Number of children
 int numParent;			//Numbers of parents
 
+bool isChild[1000000];
 bool randBool(int prob)
 {
-	srand(time(NULL));
+	//srand(time(NULL));
 	int temp=rand()%100 + 1;
 	if(temp<=prob)
 		return true;
@@ -45,16 +46,16 @@ bool randBool(int prob)
 
 void dagGen(int tc)
 {
-	ofstream myfile,dot;
-	myfile.open("test.txt");
+	ofstream dot;
 	dot.open("graph1.gv");
 	for(int k=1;k<=tc;k++)
 	{
-		myfile<<"#test_"<<k<<endl;
+		memset(isChild,0,sizeof(isChild));
+		cout<<nodesNum<<endl;
 		dot<<"digraph G {"<<endl;
 		for(int i=1;i<=nodesNum;i++)
 		{
-		    //srand(time(NULL));
+		    srand(time(NULL));
 			bool flag=false;
 			int cntChild=0;
 			for(int j=i+1;j<=nodesNum;j++)
@@ -65,7 +66,8 @@ void dagGen(int tc)
 				}
 				if(randBool(50))
 				{
-					myfile<<i<<"->"<<j<<endl;
+					isChild[j]=true;
+					cout<<i<<" "<<j<<endl;
 					dot<<i<<"->"<<j<<endl;
 					flag=true;
 					cntChild++;
@@ -73,10 +75,20 @@ void dagGen(int tc)
 			}
 			if(!flag)
 			{
-				myfile<<i<<"->"<<"0"<<endl;
-				dot<<i<<"->"<<"0"<<endl;
+				cout<<i<<" "<<nodesNum+1<<endl;
+				dot<<i<<"->"<<nodesNum+1<<endl;
 			}
 
+		}
+
+		//Making sentinal root with zero computation value
+		for(int i=1;i<=nodesNum;i++)
+		{
+			if(!isChild[i])
+			{
+				cout<<"0"<<" "<<i<<endl;
+				dot<<"0"<<"->"<<i<<endl;
+			}
 		}
 		dot<<"}"<<endl;
 	}
@@ -85,6 +97,7 @@ void dagGen(int tc)
 
 int main()
 {
+	
 	int tc;
 	cout<<"Number of test cases to generate: ";
 	cin>>tc;
@@ -94,7 +107,7 @@ int main()
 	//cout<<endl;
 	cout<<"Enter maximum number of children a task node can have: ";
 	cin>>numChild;
-	//cout<<endl;
-	dagGen(10);
+	//cout<<"chetan"<<endl;
+	dagGen(tc);
 	return 0;
 }

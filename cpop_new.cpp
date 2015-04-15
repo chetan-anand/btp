@@ -192,7 +192,7 @@ void display()
 /////////////////////////////////////////////////////////////
 /*Implementing HEFT heuristics algorithm*/
 
-void cpop_algo()
+void heft_algo()
 {
     vector<int> root;
     root=find_root();
@@ -226,7 +226,56 @@ void cpop_algo()
 
     sort(sorted_list+1,sorted_list+n,comp);
 
-    
+    priority_queue<struct node, vector<node>, Compare> pq;
+    pq.push(nodes[temp_root]);
+    nodes[temp_root].status=true;
+    double make_span=0.0;
+    while(!pq.empty())
+    {
+        node temp=pq.top();
+
+        cout<<"key="<<temp.key<<endl;
+        cout<<"EST="<<temp.EST<<endl;
+        pq.pop();
+        cout<<"size="<<pq.size()<<endl;
+        // Processor selection phase
+        double minv=DBL_MAX;
+        int idx=0;
+        for(int i=0;i<cores.size();i++)
+        {
+            double duration=temp.cost/cores[i].speed;
+            double temp_start=max(cores[i].EST, temp.EST);
+            if((duration + temp_start) < minv)
+            {
+                minv=duration+temp_start;
+                idx=i;
+            }
+        }
+        cout<<"minv="<<minv<<endl;
+
+        schedule temp_sch;
+        temp_sch.start=max(cores[idx].EST, temp.EST);;
+        temp_sch.end=minv;
+        temp_sch.task=temp.key;
+        temp_sch.processor=idx;
+        cores[idx].EST=minv;
+        sch.push_back(temp_sch);
+
+        for(int i=0;i<adj[temp.key].size();i++)
+        {
+            if(!nodes[adj[temp.key][i]].status)
+            {
+                nodes[adj[temp.key][i]].status=true;
+                nodes[adj[temp.key][i]].EST=minv;
+                cout<<"minv1="<<nodes[adj[temp.key][i]].EST<<endl;
+                pq.push(nodes[adj[temp.key][i]]);
+                
+                cout<<"queue_push"<<adj[temp.key][i]<<endl;
+            }
+            
+        }
+
+    }
     display();
 }
 
