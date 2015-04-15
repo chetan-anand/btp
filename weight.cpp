@@ -7,8 +7,8 @@ int main()
 	ofstream out;
 	int num=10;
 	out.open("weight.ip");
-	/*cout<<"How many nodes=";
-	cin>>num;*/
+	cout<<"How many nodes=";
+	cin>>num;
 	srand(time(NULL));
 	for(int i=0;i<num;i++)
 	{
@@ -17,5 +17,6 @@ int main()
 		cout<<temp<<endl;
 		out<<temp<<endl;
 	}
+	out.close();
 	return 0;
 }
