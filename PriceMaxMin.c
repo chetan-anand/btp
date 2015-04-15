@@ -1,7 +1,8 @@
+#include <bits/stdc++.h>
 #include<stdio.h>
 #include<stdlib.h>
 #include<limits.h>
-
+using namespace std;
 // cost is always integer as it is number of statements and it is taken double in code just for simple calculation purpose.
 
 struct node
@@ -202,13 +203,23 @@ void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice
             else
                 final_avail=p_available[i];
 
-            if((final_avail+(cost[select_t]/pspeed[i]))< min)
+            if(((cost[select_t]/pspeed[i])*pprice[i])< min)
             {
-                min=final_avail+(cost[select_t]/pspeed[i]);
+                min=(cost[select_t]/pspeed[i])*pprice[i];
                 select_p=i;
-                printf("processor slected: %d\tmin: %lf\tfinal_available: %lf\n",select_p+1,min,final_avail);
+                printf("processor slected: %d\Min Processor Cost: %lf\tfinal_available: %lf\n",select_p+1,min,final_avail);
                 temp_start_time=final_avail;
             }
+            else if(((cost[select_t]/pspeed[i])*pprice[i]) == min)
+            {
+                if(temp_start_time > final_avail)
+                {
+                    select_p=i;
+                    temp_start_time=final_avail;
+                }
+            }
+
+
         }
 
         schedule[select_t]=1;

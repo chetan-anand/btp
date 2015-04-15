@@ -182,10 +182,16 @@ int upward_rank(int root)
 void display()
 {
     line;
+    int make_span=0;
+    int total_cost=0;
     for(int i=0;i<sch.size();i++)
     {
+        make_span=max(make_span,sch[i].end);
         cout<<"task ="<<sch[i].task<<" : processor ="<<sch[i].processor<<" : start="<<sch[i].start<<" : end="<<sch[i].end<<endl;
+        total_cost= total_cost + ((sch[i].end-sch[i].start)*cores[sch[i].processor].id);
     }
+    cout<<n<<" "<<make_span<<endl;
+    cout<<n<<" "<<total_cost<<endl;
     line;
 }
 
@@ -196,7 +202,7 @@ void heft_algo()
 {
     vector<int> root;
     root=find_root();
-    cout<<"Roots are:"<<endl;
+    //cout<<"Roots are:"<<endl;
 
     for(int i=0;i<root.size();i++)
     {
@@ -296,18 +302,38 @@ void init_core()
     }
 }
 
+void populate_weight()
+{
+    ifstream inp;
+    inp.open("weight.ip");
 
+    for(int i=1;i<=n;i++)
+    {
+        /*nodes[i].cost=(1+rand()%5)*4;
+        nodes[i].key=i;
+        cout<<"Index="<<i<<" "<<"Cost="<<nodes[i].cost<<endl;*/
+        int temp;
+        inp>>temp;
+        cout<<"weight temp="<<temp<<endl;
+        nodes[i].cost=temp*4;
+        nodes[i].key=i;
+
+    }
+    inp.close();
+}
 ////////////////////////////////////////////////////////////////////////////////////////
 int main()
 {
     n=5;
+    populate_weight();
+    //cin>>n;
     //////////////////////////////////////////////////////////////
-    for(int i=1;i<=5;i++)
+    /*for(int i=1;i<=5;i++)
     {
         nodes[i].cost=(1+rand()%5)*4;
         nodes[i].key=i;
         cout<<"Index="<<i<<" "<<"Cost="<<nodes[i].cost<<endl;
-    }
+    }*/
 
     
     /////////////////////////////////////////////////////////////

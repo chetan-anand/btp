@@ -176,6 +176,11 @@ int upward_rank(int root)
     return nodes[root].ranku;
 }
 
+/*Calculation of downward rank of each task node: */
+int downward_rank(int root)
+{
+    
+}
 
 //////////////////////////////////////////////////////////////////////////////////
 
