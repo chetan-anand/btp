@@ -326,7 +326,7 @@ int main()
 {
     n=5;
     populate_weight();
-    //cin>>n;
+    cin>>n;
     //////////////////////////////////////////////////////////////
     /*for(int i=1;i<=5;i++)
     {
@@ -344,6 +344,8 @@ int main()
     adj[2].push_back(4);
     adj[3].push_back(5);
     adj[4].push_back(5);
+
+    //for(int i=0;i<)
     line;
 
     for(int i=1;i<=5;i++)

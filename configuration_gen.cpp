@@ -5,6 +5,17 @@ Generating random cost configuration models of the computing resources from the 
 y = a*x^n + c 
 */
 
+/*
+Cost configuration equation
+y= a*x^n + c
+
+where:- 
+y = per unit cost of using the particular computing resources
+x =	speed of the processor
+n = Degree of cost equation
+c = Initial cost of the processor
+*/
+
 #inlcude <bits/stdc++.h>
 using namespace std;
 
@@ -29,16 +40,7 @@ int main()
 	int a,c,n,x;
 	a=1;
 	c=
-=======
-Cost configuration equation
-y= a*x^n + c
 
-where:- 
-y = per unit cost of using the particular computing resources
-x =	
-n = Degree of cost equation
-c =  
-*/
 
 #include <bits/stdc++.h>
 using namespace std;

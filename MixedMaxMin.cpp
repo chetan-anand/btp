@@ -5,6 +5,11 @@
 using namespace std;
 // cost is always integer as it is number of statements and it is taken double in code just for simple calculation purpose.
 
+int num_nodes;
+int num_edges;
+
+
+
 struct node
 {
     int data;
@@ -128,7 +133,7 @@ void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice
 {
     printf("inside LTF_MFT\n%d\n",n);
     int n_schedule=0,i,select_t,select_p,n_free=0;
-    double max=0,min=10000000000000000000000;
+    double max=0,min=1000000000000000000;
     double start_time[n],finish_time[n];
     struct node *temp;
     struct schedulenode *temp1;
@@ -139,6 +144,8 @@ void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice
     double *p_available=(double *)malloc(sizeof(double)*pnum);
     double final_avail=0;
     double temp_start_time=0;
+    double alpha=0.5;
+    double beta=0.5;
 
     printf("before  initialisation\n");
     for(i=0;i<n;i++)
@@ -203,14 +210,15 @@ void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice
             else
                 final_avail=p_available[i];
 
-            if(((cost[select_t]/pspeed[i])*pprice[i])< min)
+            if(((alpha*(final_avail+(cost[select_t]/pspeed[i])))+(beta*(cost[select_t]/pspeed[i])*pprice[i]))< min)
             {
-                min=(cost[select_t]/pspeed[i])*pprice[i];
+                min=(alpha*(final_avail+(cost[select_t]/pspeed[i])))+(beta*(cost[select_t]/pspeed[i])*pprice[i]);
                 select_p=i;
-                printf("processor slected: %d\Min Processor Cost: %lf\tfinal_available: %lf\n",select_p+1,min,final_avail);
+                printf("processor slected: %d  Min Processor Cost: %lf\tfinal_available: %lf\n",select_p+1,min,final_avail);
                 temp_start_time=final_avail;
             }
-            else if(((cost[select_t]/pspeed[i])*pprice[i]) == min)
+
+            else if((alpha*(final_avail+(cost[select_t]/pspeed[i]))+(beta*(cost[select_t]/pspeed[i])*pprice[i])) == min)
             {
                 if(temp_start_time > final_avail)
                 {
@@ -280,15 +288,34 @@ void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice
     printf("--------------------------------------------------------------------------------");
 }
 
+
+void populate_weight()
+{
+    /*ifstream inp;
+    inp.open("weight.ip");
+
+    for(int i=0;i<num_nodes;i++)
+    {
+        int temp;
+        cin>>temp;
+        cost[i]=temp;
+    }
+    inp.close();*/
+}
+
 int main()
 {
     int i,pnum;
     double *pspeed,*pprice;
+    num_nodes=7;
+    //cin>>num_nodes;
     double cost[7]={5,10,15,40,45,35,25};
     struct node *List[8];                   //have taken one extra to for easy index referring.
-    for(i=0;i<8;i++)
+    for(i=0;i<num_nodes+1;i++)
         List[i]=NULL;
     List[0]=NULL;
+    
+
     insertion_beg(&List[1],2);
     insertion_beg(&List[1],3);
     insertion_beg(&List[2],7);
@@ -299,20 +326,38 @@ int main()
     insertion_beg(&List[6],7);
     List[7]=NULL;
 
+    /*
+    
+    cin>>num_edges;
+    for(int i=0;i<num_edges;i++)
+    {
+        int x,y;
+        cin>>x>>y;
+        insertion_beg(&List[x],y);
+    }
+    List[]
+    */
     printf("Enter the number of processors\n");
+    //ifstream inp1;
+    //inp1.open("configuration.ip");
     scanf("%d",&pnum);
+    //inp>>pnum;
     pspeed=(double *)malloc(sizeof(double)*pnum);
     pprice=(double *)malloc(sizeof(double)*pnum);
     printf("Enter the speed of procesors\n");
     for(i=0;i<pnum;i++)
     {
         scanf("%lf",&pspeed[i]);
+        //inp>>pspeed[i];
+        cout<<"speed="<<pspeed[i]<<endl;
     }
     printf("Enter the prices of processors\n");
     for(i=0;i<pnum;i++)
     {
         scanf("%lf",&pprice[i]);
+        //inp1>>pprice[i];
+        cout<<"price="<<pprice[i]<<endl;
     }
-    LTF_MFT(List,cost,7,pspeed,pprice,pnum);
+    LTF_MFT(List,cost,num_nodes,pspeed,pprice,pnum);
     return 0;
 }
