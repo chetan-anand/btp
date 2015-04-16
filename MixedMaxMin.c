@@ -5,6 +5,11 @@
 using namespace std;
 // cost is always integer as it is number of statements and it is taken double in code just for simple calculation purpose.
 
+int num_nodes;
+int num_edges;
+
+
+
 struct node
 {
     int data;
@@ -283,15 +288,34 @@ void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice
     printf("--------------------------------------------------------------------------------");
 }
 
+
+void populate_weight()
+{
+    ifstream inp;
+    inp.open("weight.ip");
+
+    for(int i=0;i<num_nodes;i++)
+    {
+        int temp;
+        cin>>temp;
+        cost[i]=temp;
+    }
+    inp.close();
+}
+
 int main()
 {
     int i,pnum;
     double *pspeed,*pprice;
+    num_nodes=7;
+    //cin>>num_nodes;
     double cost[7]={5,10,15,40,45,35,25};
     struct node *List[8];                   //have taken one extra to for easy index referring.
-    for(i=0;i<8;i++)
+    for(i=0;i<num_nodes+1;i++)
         List[i]=NULL;
     List[0]=NULL;
+    
+
     insertion_beg(&List[1],2);
     insertion_beg(&List[1],3);
     insertion_beg(&List[2],7);
@@ -302,6 +326,17 @@ int main()
     insertion_beg(&List[6],7);
     List[7]=NULL;
 
+    /*
+    
+    cin>>num_edges;
+    for(int i=0;i<num_edges;i++)
+    {
+        int x,y;
+        cin>>x>>y;
+        insertion_beg(&List[x],y);
+    }
+    List[]
+    */
     printf("Enter the number of processors\n");
     scanf("%d",&pnum);
     pspeed=(double *)malloc(sizeof(double)*pnum);
