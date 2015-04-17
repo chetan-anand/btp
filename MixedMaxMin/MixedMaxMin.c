@@ -127,7 +127,7 @@ void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice
 {
     printf("inside LTF_MFT\n%d\n",n);
     int n_schedule=0,i,select_t,select_p,n_free=0;
-    double max=0,min=10000000000000000000000;
+    double max=0,min=10000000000000000;
     double start_time[n],finish_time[n];
     struct node *temp;
     struct schedulenode *temp1;
@@ -208,7 +208,7 @@ void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice
             {
                 min=(alpha*(final_avail+(cost[select_t]/pspeed[i])))+(beta*(cost[select_t]/pspeed[i])*pprice[i]);
                 select_p=i;
-                printf("processor slected: %d\Min Processor Cost: %lf\tfinal_available: %lf\n",select_p+1,min,final_avail);
+                printf("processor slected: %d  Min Processor Cost: %lf\tfinal_available: %lf\n",select_p+1,min,final_avail);
                 temp_start_time=final_avail;
             }
 

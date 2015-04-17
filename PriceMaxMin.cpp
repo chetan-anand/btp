@@ -268,7 +268,7 @@ void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice
 
         n_schedule++;
     }
-
+ 
     printf("--------------------------------------------------------------------------------");
     printf("\n");
     print_scheduleLength(p_available,pnum);
@@ -278,6 +278,7 @@ void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice
     print_scheduling(scheduleList,pnum);
     printf("\n");
     printf("--------------------------------------------------------------------------------");
+
 }
 
 int main()
