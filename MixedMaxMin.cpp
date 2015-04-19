@@ -282,7 +282,9 @@ void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice
     print_scheduleLength(p_available,pnum);
     printf(" ");
     print_scheduleCost(pcost,pnum);
-    printf("\n");
+    cout<<" "<<num_nodes-2<<endl;
+
+
     //print_scheduling(scheduleList,pnum);
     //printf("\n");
     //printf("--------------------------------------------------------------------------------");

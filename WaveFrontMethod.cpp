@@ -98,7 +98,7 @@ void print_scheduleLength(double *p_available,int pnum)
             max=p_available[i];
     }
 
-    printf("Schedule Length: %lf",max);
+    printf("%lf",max);
 }
 
 void print_scheduleCost(double *pcost,int pnum)
@@ -110,7 +110,7 @@ void print_scheduleCost(double *pcost,int pnum)
         sum+=pcost[i];
     }
 
-    printf("Schedule Cost: %lf",sum);
+    printf("%lf",sum);
 }
 
 void print_scheduling(struct schedulenode **scheduleList,int pnum)
@@ -332,7 +332,8 @@ void WaveFront(struct node **List,double *cost,int n,double *pspeed,double *ppri
     print_scheduleLength(p_available,pnum);
     printf(" ");
     print_scheduleCost(pcost,pnum);
-    printf("\n");
+    cout<<" "<<num_nodes-2<<endl;
+
     /*print_scheduling(scheduleList,pnum);
     printf("\n");
     printf("--------------------------------------------------------------------------------");*/

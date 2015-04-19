@@ -92,7 +92,7 @@ void print_scheduleLength(double *p_available,int pnum)
             max=p_available[i];
     }
 
-    printf("Schedule Length: %lf",max);
+    printf("%lf",max);
 }
 
 void print_scheduleCost(double *pcost,int pnum)
@@ -104,7 +104,7 @@ void print_scheduleCost(double *pcost,int pnum)
         sum+=pcost[i];
     }
 
-    printf("Schedule Cost: %lf",sum);
+    printf("%lf",sum);
 }
 
 void print_scheduling(struct schedulenode **scheduleList,int pnum)
@@ -265,7 +265,8 @@ void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice
     print_scheduleLength(p_available,pnum);
     printf(" ");
     print_scheduleCost(pcost,pnum);
-    printf("\n");
+    cout<<" "<<num_nodes-2<<endl;
+
     //print_scheduling(scheduleList,pnum);
     //printf("\n");
     //printf("--------------------------------------------------------------------------------");
@@ -327,7 +328,7 @@ int main()
     insertion_beg(&List[6],7);
     List[7]=NULL;*/
 
-    printf("Enter the number of processors\n");
+    //printf("Enter the number of processors\n");
 
     /*---------------------------*/
     ifstream inp1;
@@ -338,13 +339,13 @@ int main()
     //scanf("%d",&pnum);
     pspeed=(double *)malloc(sizeof(double)*pnum);
     pprice=(double *)malloc(sizeof(double)*pnum);
-    printf("Enter the speed of procesors\n");
+    //printf("Enter the speed of procesors\n");
     for(i=0;i<pnum;i++)
     {
         inp1>>pspeed[i];
         //scanf("%lf",&pspeed[i]);
     }
-    printf("Enter the prices of processors\n");
+    //printf("Enter the prices of processors\n");
     for(i=0;i<pnum;i++)
     {
         inp1>>pprice[i];
