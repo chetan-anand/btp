@@ -1,0 +1,7 @@
+Parameters
+--------------------------------------
+1. Number of nodes
+2. Number of proccessors
+3. Change in speed of processors
+4. Change in cost of proccessors
+5. Change in cost policy of proccessors

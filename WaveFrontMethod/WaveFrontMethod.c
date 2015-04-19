@@ -165,7 +165,7 @@ void WaveFront(struct node **List,double *cost,int n,double *pspeed,double *ppri
 {
     printf("inside WaveFront\n%d\n",n);
     int n_schedule=0,i,select_t,select_p;
-    double max=0,min=10000000000000000000000;
+    double max=0,min=1000000000000000;
     double start_time[n],finish_time[n];
     struct node *temp;
     struct schedulenode *temp1;
@@ -221,7 +221,7 @@ void WaveFront(struct node **List,double *cost,int n,double *pspeed,double *ppri
         n_free=0;
         max=-1;
         arr=(int *)malloc(sizeof(int)*1);
-        temp_cost=(int *)malloc(sizeof(int)*1);
+        temp_cost=(double *)malloc(sizeof(double)*1);
         for(i=0;i<n;i++)
         {
 
@@ -229,7 +229,7 @@ void WaveFront(struct node **List,double *cost,int n,double *pspeed,double *ppri
             {
                 n_free++;
                 arr=(int *)realloc(arr,n_free);
-                temp_cost=(int *)realloc(temp_cost,n_free);
+                temp_cost=(double *)realloc(temp_cost,n_free);
                 arr[n_free-1]=i;
                 temp_cost[n_free-1]=cost[i];
             }

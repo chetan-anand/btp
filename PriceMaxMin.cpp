@@ -5,6 +5,7 @@
 using namespace std;
 // cost is always integer as it is number of statements and it is taken double in code just for simple calculation purpose.
 
+int num_nodes;
 struct node
 {
     int data;
@@ -126,7 +127,7 @@ void print_scheduling(struct schedulenode **scheduleList,int pnum)
 
 void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice,int pnum)
 {
-    printf("inside LTF_MFT\n%d\n",n);
+    //printf("inside LTF_MFT\n%d\n",n);
     int n_schedule=0,i,select_t,select_p,n_free=0;
     double max=0,min=1000000000000000000;
     double start_time[n],finish_time[n];
@@ -140,7 +141,7 @@ void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice
     double final_avail=0;
     double temp_start_time=0;
 
-    printf("before  initialisation\n");
+    //printf("before  initialisation\n");
     for(i=0;i<n;i++)
     {
         schedule[i]=0;
@@ -154,15 +155,15 @@ void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice
         pcost[i]=0;
         p_available[i]=0;
     }
-    printf("after initialisation\n");
+    //printf("after initialisation\n");
     for(i=0;i<pnum+1;i++)
         scheduleList[i]=NULL;
     // finding indegree of the nodes.
-    printf("before finding indegree\n");
+    //printf("before finding indegree\n");
     for(i=0;i<n;i++)
     {
         temp=List[i+1];
-        print(temp);
+        //print(temp);
         while(temp)
         {
             indegree[(temp->data)-1]++;
@@ -170,12 +171,12 @@ void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice
         }
     }
 
-    printf("after finding indegree\nPrinting indegree of nodes\n");
+    //printf("after finding indegree\n//printing indegree of nodes\n");
     for(i=0;i<n;i++)
     {
-        printf("%d\t",indegree[i]);
+        //printf("%d\t",indegree[i]);
     }
-    printf("\n");
+    //printf("\n");
 
     while(n_schedule<n)
     {
@@ -194,7 +195,7 @@ void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice
         }
         min=10000000000000000;
 
-        printf("Task selected %d with start time %lf\n\n",select_t+1,start_time[select_t]);
+        //printf("Task selected %d with start time %lf\n\n",select_t+1,start_time[select_t]);
 
         for(i=0;i<pnum;i++)
         {
@@ -207,7 +208,7 @@ void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice
             {
                 min=(cost[select_t]/pspeed[i])*pprice[i];
                 select_p=i;
-                printf("processor slected: %d  Min Processor Cost: %lf\tfinal_available: %lf\n",select_p+1,min,final_avail);
+                //printf("processor slected: %d  Min Processor Cost: %lf\tfinal_available: %lf\n",select_p+1,min,final_avail);
                 temp_start_time=final_avail;
             }
             else if(((cost[select_t]/pspeed[i])*pprice[i]) == min)
@@ -230,12 +231,12 @@ void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice
             indegree[(temp->data)-1]--;
             temp=temp->next;
         }
-        printf("indegree after scheduling %d node on %d processor\n",select_t+1,select_p+1);
+        //printf("indegree after scheduling %d node on %d processor\n",select_t+1,select_p+1);
         for(i=0;i<n;i++)
         {
-            printf("%d\t",indegree[i]);
+            //printf("%d\t",indegree[i]);
         }
-        printf("\n");
+        //printf("\n");
 
         start_time[select_t]=temp_start_time;
         p_available[select_p]=temp_start_time+cost[select_t]/pspeed[select_p];
@@ -255,42 +256,78 @@ void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice
         }
 
 
-        printf("start time after scheduling %d node on %d processor\n",select_t+1,select_p+1);
+        //printf("start time after scheduling %d node on %d processor\n",select_t+1,select_p+1);
         for(i=0;i<n;i++)
         {
-            printf("%lf\t",start_time[i]);
+            //printf("%lf\t",start_time[i]);
         }
-        printf("\n");
+        //printf("\n");
         pcost[select_p]+=(cost[select_t]/pspeed[select_p])*pprice[select_p];
 
         insertion_end(&scheduleList[select_p+1],select_t+1,start_time[select_t],finish_time[select_t]);
-        print1(scheduleList[select_p+1]);
+        //print1(scheduleList[select_p+1]);
 
         n_schedule++;
     }
  
-    printf("--------------------------------------------------------------------------------");
-    printf("\n");
+    //printf("--------------------------------------------------------------------------------");
+    //printf("\n");
     print_scheduleLength(p_available,pnum);
-    printf("\n");
+    printf(" ");
     print_scheduleCost(pcost,pnum);
     printf("\n");
-    print_scheduling(scheduleList,pnum);
-    printf("\n");
-    printf("--------------------------------------------------------------------------------");
+    //print_scheduling(scheduleList,pnum);
+    //printf("\n");
+    //printf("--------------------------------------------------------------------------------");
 
 }
 
 int main()
 {
+    /*---------------------------*/
+    ifstream inp2,inp;
+    inp2.open("test.ip");
+    /*---------------------------*/
     int i,pnum;
     double *pspeed,*pprice;
-    double cost[7]={5,10,15,40,45,35,25};
-    struct node *List[8];                   //have taken one extra to for easy index referring.
-    for(i=0;i<8;i++)
+
+    /*---------------------------*/
+    inp2>>num_nodes;
+    num_nodes+=2;
+    double *cost= new double[num_nodes];
+    cost[0]=cost[num_nodes-1]=0.0;
+    inp.open("weight.ip");
+    for(int i=1;i<num_nodes-1;i++)
+    {
+        int temp;
+        //cin>>temp;
+        inp>>temp;
+        //cout<<"cost="<<temp<<endl;
+        cost[i]=temp;
+    }
+    /*---------------------------*/
+
+    //double cost[7]={5,10,15,40,45,35,25};
+    struct node **List = new node *[num_nodes+1];
+    //struct node *List[8];                   //have taken one extra to for easy index referring.
+    for(i=0;i<num_nodes;i++)
         List[i]=NULL;
     List[0]=NULL;
-    insertion_beg(&List[1],2);
+
+    /*---------------------------*/
+    while(true)
+    {
+        int x,y;
+        inp2>>x>>y;
+
+        if(x==-1){break;}
+        //cout<<x<<"-"<<y<<endl;
+        insertion_beg(&List[x],y);
+    }
+    List[num_nodes]=NULL;
+    /*---------------------------*/
+
+    /*insertion_beg(&List[1],2);
     insertion_beg(&List[1],3);
     insertion_beg(&List[2],7);
     insertion_beg(&List[3],4);
@@ -298,22 +335,32 @@ int main()
     insertion_beg(&List[4],6);
     insertion_beg(&List[5],6);
     insertion_beg(&List[6],7);
-    List[7]=NULL;
+    List[7]=NULL;*/
 
-    printf("Enter the number of processors\n");
-    scanf("%d",&pnum);
+    //printf("Enter the number of processors\n");
+
+    /*---------------------------*/
+    ifstream inp1;
+    inp1.open("configuration.ip");
+    inp1>>pnum;
+    /*---------------------------*/
+
+    //scanf("%d",&pnum);
     pspeed=(double *)malloc(sizeof(double)*pnum);
     pprice=(double *)malloc(sizeof(double)*pnum);
-    printf("Enter the speed of procesors\n");
+    //printf("Enter the speed of procesors\n");
     for(i=0;i<pnum;i++)
     {
-        scanf("%lf",&pspeed[i]);
+        inp1>>pspeed[i];
+        //scanf("%lf",&pspeed[i]);
     }
-    printf("Enter the prices of processors\n");
+    //printf("Enter the prices of processors\n");
     for(i=0;i<pnum;i++)
     {
-        scanf("%lf",&pprice[i]);
+        inp1>>pprice[i];
+        //scanf("%lf",&pprice[i]);
     }
-    LTF_MFT(List,cost,7,pspeed,pprice,pnum);
+    inp1.close();
+    LTF_MFT(List,cost,num_nodes,pspeed,pprice,pnum);
     return 0;
 }

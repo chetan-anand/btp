@@ -55,7 +55,7 @@ void dagGen(int tc)
 		dot<<"digraph G {"<<endl;
 		for(int i=1;i<=nodesNum;i++)
 		{
-		    srand(time(NULL));
+		    //srand(time(NULL));
 			bool flag=false;
 			int cntChild=0;
 			for(int j=i+1;j<=nodesNum;j++)
@@ -67,16 +67,16 @@ void dagGen(int tc)
 				if(randBool(50))
 				{
 					isChild[j]=true;
-					cout<<i<<" "<<j<<endl;
-					dot<<i<<"->"<<j<<endl;
+					cout<<i+1<<" "<<j+1<<endl;
+					dot<<i+1<<"->"<<j+1<<endl;
 					flag=true;
 					cntChild++;
 				}
 			}
 			if(!flag)
 			{
-				cout<<i<<" "<<nodesNum+1<<endl;
-				dot<<i<<"->"<<nodesNum+1<<endl;
+				cout<<i+1<<" "<<nodesNum+2<<endl;
+				dot<<i+1<<"->"<<nodesNum+2<<endl;
 			}
 
 		}
@@ -86,10 +86,11 @@ void dagGen(int tc)
 		{
 			if(!isChild[i])
 			{
-				cout<<"0"<<" "<<i<<endl;
-				dot<<"0"<<"->"<<i<<endl;
+				cout<<"1"<<" "<<i+1<<endl;
+				dot<<"1"<<"->"<<i+1<<endl;
 			}
 		}
+		cout<<"-1 -1"<<endl;
 		dot<<"}"<<endl;
 	}
 
@@ -99,13 +100,13 @@ int main()
 {
 	
 	int tc;
-	cout<<"Number of test cases to generate: ";
+	//cout<<"Number of test cases to generate: ";
 	cin>>tc;
 	//cout<<endl;
-	cout<<"Enter number of task nodes: ";
+	//cout<<"Enter number of task nodes: ";
 	cin>>nodesNum;
 	//cout<<endl;
-	cout<<"Enter maximum number of children a task node can have: ";
+	//cout<<"Enter maximum number of children a task node can have: ";
 	cin>>numChild;
 	//cout<<"chetan"<<endl;
 	dagGen(tc);
