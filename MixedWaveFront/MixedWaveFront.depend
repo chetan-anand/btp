@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1428699597 source:c:\acad\7th sem\btp\implementation\mixedwavefront\main.c
+	<stdio.h>
+	<stdlib.h>
+	<limits.h>
+

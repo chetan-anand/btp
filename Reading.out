@@ -1,51 +1,308 @@
-Num_nodes=10 no_of_child = 3
+Num_nodes=10 no_of_child = 3  test1.ip
 ------------------------------------------------------------
 codefire@hp:~/github/btp$ g++ MixedMaxMin.cpp 
-codefire@hp:~/github/btp$ ./a.out
-186.833333 2016.000000 10
-codefire@hp:~/github/btp$ g++ LTF.cpp 
-codefire@hp:~/github/btp$ ./a.out
-1134.333333 2016.000000 10
-codefire@hp:~/github/btp$ g++ PriceMaxMin.cpp 
 codefire@hp:~/github/btp$ ./a.out 
-3919.000000 2016.000000 10
+24.000000 276.000000 10
+codefire@hp:~/github/btp$ g++ PriceWaveFront.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+114.000000 228.000000 10
 codefire@hp:~/github/btp$ g++ WaveFrontMethod.cpp 
 codefire@hp:~/github/btp$ ./a.out 
-197.000000 2016.000000 10
+21.333333 291.666667 10
+codefire@hp:~/github/btp$ g++ mixedWaveFront.cpp 
+codefire@hp:~/github/btp$ ./a.out
+24.500000 276.000000 10
+codefire@hp:~/github/btp$ g++ PriceMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+1414.000000 228.000000 10
+codefire@hp:~/github/btp$ g++ LTF.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+158.500000 288.000000 10
 
-Num_nodes=50 no_child = 26
+
+Num_nodes=50 no_child = 16 	test2.ip
 ---------------------------------------------------------------
-codefire@hp:~/github/btp$ g++ MixedMaxMin.cpp
+codefire@hp:~/github/btp$ g++ MixedMaxMin.cpp 
 codefire@hp:~/github/btp$ ./a.out 
-396.333333 4208.000000 20
-codefire@hp:~/github/btp$ g++ LTF.cpp 
-codefire@hp:~/github/btp$ ./a.out
-109009.666667 4208.000000 20
-codefire@hp:~/github/btp$ g++ PriceMaxMin.cpp 
-codefire@hp:~/github/btp$ ./a.out
-376562.000000 4208.000000 20
+133.000000 1351.000000 50
+codefire@hp:~/github/btp$ g++ PriceWaveFront.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+562.000000 1124.000000 50
 codefire@hp:~/github/btp$ g++ WaveFrontMethod.cpp 
 codefire@hp:~/github/btp$ ./a.out 
-426.666667 4208.000000 20
+95.666667 1430.666667 50
+codefire@hp:~/github/btp$ g++ mixedWaveFront.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+113.500000 1381.666667 50
+codefire@hp:~/github/btp$ g++ PriceMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+9079063870.000000 1124.000000 50
+codefire@hp:~/github/btp$ g++ LTF.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+189363310.166667 1424.666667 50
 
 
 
-Num_nodes=100 no_child = 33
+Num_nodes=100 no_child = 33 	test3.ip
 ---------------------------------------------------------------
-codefire@hp:~/github/btp$ g++ MixedMaxMin.cpp
+codefire@hp:~/github/btp$ g++ MixedMaxMin.cpp 
 codefire@hp:~/github/btp$ ./a.out 
-537.666667 6376.000000 30
-codefire@hp:~/github/btp$ g++ LTF.cpp 
+310.500000 2712.000000 100
+codefire@hp:~/github/btp$ g++ PriceWaveFront.cpp 
 codefire@hp:~/github/btp$ ./a.out 
-4005298.166667 6376.000000 30
-codefire@hp:~/github/btp$ g++ PriceMaxMin.cpp 
-codefire@hp:~/github/btp$ ./a.out 
-6894415.166667 6376.000000 30
+1128.000000 2256.000000 100
 codefire@hp:~/github/btp$ g++ WaveFrontMethod.cpp 
 codefire@hp:~/github/btp$ ./a.out 
-520.166667 6376.000000 30
+200.166667 2876.000000 100
+codefire@hp:~/github/btp$ g++ mixedWaveFront.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+261.000000 2741.333333 100
+codefire@hp:~/github/btp$ g++ PriceMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+150046528910595162112.000000 2256.000000 100
+codefire@hp:~/github/btp$ g++ LTF.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+9853567462257390.000000 2850.000000 100
 
-Num_nodes=150 no_child = 50
+
+
+
+Num_nodes=150 no_child = 50 	test4.ip
 ------------------------------------------------------
+codefire@hp:~/github/btp$ g++ MixedMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+480.000000 4107.666667 150
+codefire@hp:~/github/btp$ g++ PriceWaveFront.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+1712.000000 3424.000000 150
+codefire@hp:~/github/btp$ g++ WaveFrontMethod.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+310.166667 4364.000000 150
+codefire@hp:~/github/btp$ g++ mixedWaveFront.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+443.500000 4147.000000 150
+codefire@hp:~/github/btp$ g++ PriceMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+63442652080839616369023516672.000000 3424.000000 150
+codefire@hp:~/github/btp$ g++ LTF.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+9512688386303802.000000 4313.666667 150
+
+
+
+
+Num_nodes=200 no_child = 66 	test5.ip
+-----------------------------------------------------
+codefire@hp:~/github/btp$ g++ MixedMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+556.500000 5575.333333 200
+codefire@hp:~/github/btp$ g++ PriceWaveFront.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+2304.000000 4608.000000 200
+codefire@hp:~/github/btp$ g++ WaveFrontMethod.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+408.666667 5852.333333 200
+codefire@hp:~/github/btp$ g++ mixedWaveFront.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+542.000000 5599.000000 200
+codefire@hp:~/github/btp$ g++ PriceMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+208706522379860462019349344410612531200.000000 4608.000000 200
+codefire@hp:~/github/btp$ cat test5.ip >test.ip
+codefire@hp:~/github/btp$ g++ LTF.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+6649204072780714.000000 5995.666667 200
+
+
+Num_nodes=250 no_child=83 	test12.ip
+---------------------------------------------------
+codefire@hp:~/github/btp$ g++ MixedMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+680.500000 6925.666667 250
+codefire@hp:~/github/btp$ g++ PriceWaveFront.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+2868.000000 5736.000000 250
+codefire@hp:~/github/btp$ g++ WaveFrontMethod.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+493.166667 7310.666667 250
+codefire@hp:~/github/btp$ g++ mixedWaveFront.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+710.500000 6911.666667 250
+codefire@hp:~/github/btp$ g++ PriceMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+395189530137499939186995737853938368978540822528.000000 5736.000000 250
+
+
+
+Num_nodes=300 no_child=100 	test11.ip
+------------------------------------------------
+codefire@hp:~/github/btp$ g++ MixedMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+896.500000 8096.000000 300
+codefire@hp:~/github/btp$ g++ PriceMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+190443459650258012176106767014846228684504934402708471808.000000 6748.000000 300
+codefire@hp:~/github/btp$ g++ PriceWaveFront.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+3374.000000 6748.000000 300
+codefire@hp:~/github/btp$ g++ WaveFrontMethod.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+586.000000 8595.000000 300
+codefire@hp:~/github/btp$ g++ mixedWaveFront.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+844.500000 8161.666667 300
+codefire@hp:~/github/btp$ cat test11.ip >test.ip
+codefire@hp:~/github/btp$ g++ LTF.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+8631169232596868.000000 8862.333333 300
+
+
+Num_nodes= 500 no_child = 166 	test6.ip
+--------------------------------------------------
+codefire@hp:~/github/btp$ g++ MixedMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+1483.000000 13571.000000 500
+codefire@hp:~/github/btp$ g++ PriceWaveFront.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+5652.000000 11304.000000 500
+codefire@hp:~/github/btp$ g++ WaveFrontMethod.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+989.666667 14397.333333 500
+codefire@hp:~/github/btp$ g++ mixedWaveFront.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+1385.000000 13665.333333 500
+codefire@hp:~/github/btp$ g++ PriceMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+200643191261946060635328041814811413999247107765308582930160509105988418206030377778669303103488.000000 11304.000000 500
+codefire@hp:~/github/btp$ cat test11.ip >test.ip
+codefire@hp:~/github/btp$ g++ LTF.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+8631169232596868.000000 8862.333333 300
+codefire@hp:~/github/btp$ g++ LTF.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+7537671232342910.000000 14172.666667 500
+
+
+Num_nodes = 1000 no_child =333 	test7.ip
+-----------------------------------------------------
+
+Num_nodes = 1500 no_child = 500 test8.ip
+---------------------------------------------------
+
+Num_nodes= 2000 no_child = 666  test9.ip
+---------------------------------------------------
+
+Num_nodes =3000 no_child=1000   test10.ip
+-----------------------------------------------
+
+
+
+Ratio Reading  (test1.ip)
+-----------------------------------------------
+ratio=1
+-----------------------------------------------
+codefire@hp:~/github/btp$ g++ MixedMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+16.833333 212.000000 10
+codefire@hp:~/github/btp$ g++ LTF.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+150.000000 212.000000 10
+codefire@hp:~/github/btp$ g++ PriceMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+311.000000 212.000000 10
+codefire@hp:~/github/btp$ g++ WaveFrontMethod.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+18.000000 212.000000 10
+
+ratio=2
+------------------------------------------------
+codefire@hp:~/github/btp$ g++ MixedMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+16.833333 424.000000 10
+codefire@hp:~/github/btp$ g++ LTF.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+150.000000 424.000000 10
+codefire@hp:~/github/btp$ g++ PriceMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+311.000000 424.000000 10
+codefire@hp:~/github/btp$ g++ WaveFrontMethod.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+18.000000 424.000000 10
+
+ratio=3
+------------------------------------------------
+codefire@hp:~/github/btp$ g++ MixedMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+16.833333 636.000000 10
+codefire@hp:~/github/btp$ g++ LTF.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+150.000000 636.000000 10
+codefire@hp:~/github/btp$ g++ PriceMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+311.000000 636.000000 10
+codefire@hp:~/github/btp$ g++ WaveFrontMethod.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+18.000000 636.000000 10
+
+ratio=0.5
+--------------------------------------------------
+codefire@hp:~/github/btp$ g++ MixedMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+16.833333 106.000000 10
+codefire@hp:~/github/btp$ g++ LTF.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+150.000000 106.000000 10
+codefire@hp:~/github/btp$ g++ PriceMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+311.000000 106.000000 10
+codefire@hp:~/github/btp$ g++ WaveFrontMethod.cpp 
+codefire@hp:~/github/btp$ ./a.out 
+18.000000 106.000000 10
+
+ratio=0.33
+--------------------------------------------------
+codefire@hp:~/github/btp$ g++ MixedMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out
+16.833333 70.698333 10
+codefire@hp:~/github/btp$ g++ LTF.cpp
+codefire@hp:~/github/btp$ ./a.out
+150.000000 70.703333 10
+codefire@hp:~/github/btp$ g++ PriceMaxMin.cpp
+codefire@hp:~/github/btp$ ./a.out
+491.000000 70.490000 10
+codefire@hp:~/github/btp$ g++ WaveFrontMethod.cpp 
+codefire@hp:~/github/btp$ ./a.out
+18.000000 70.700000 10
+
+ratio=0.25
+-------------------------------------------
+codefire@hp:~/github/btp$ g++ MixedMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out
+16.833333 848.000000 10
+codefire@hp:~/github/btp$ g++ LTF.cpp
+codefire@hp:~/github/btp$ ./a.out
+150.000000 848.000000 10
+codefire@hp:~/github/btp$ g++ PriceMaxMin.cpp
+codefire@hp:~/github/btp$ ./a.out
+311.000000 848.000000 10
+codefire@hp:~/github/btp$ g++ WaveFrontMethod.cpp 
+codefire@hp:~/github/btp$ ./a.out
+18.000000 848.000000 10
+
+raio=4
+-----------------------------------------
+codefire@hp:~/github/btp$ g++ WaveFrontMethod.cpp 
+codefire@hp:~/github/btp$ ./a.out
+18.000000 848.000000 10
+codefire@hp:~/github/btp$ g++ PriceMaxMin.cpp
+codefire@hp:~/github/btp$ ./a.out
+311.000000 848.000000 10
+codefire@hp:~/github/btp$ g++ LTF.cpp
+codefire@hp:~/github/btp$ ./a.out
+150.000000 848.000000 10
+codefire@hp:~/github/btp$ g++ MixedMaxMin.cpp 
+codefire@hp:~/github/btp$ ./a.out
+16.833333 848.000000 10
+
 
 

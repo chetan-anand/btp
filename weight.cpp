@@ -9,11 +9,11 @@ int main()
 	out.open("weight.ip");
 	cout<<"How many nodes=";
 	cin>>num;
-	srand(time(NULL));
+	//srand(time(NULL));
 	for(int i=0;i<num;i++)
 	{
 		
-		int temp=((rand()%100)+1)*4;
+		int temp=((rand()%10)+1)*4;
 		cout<<temp<<endl;
 		out<<temp<<endl;
 	}

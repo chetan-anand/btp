@@ -111,17 +111,17 @@ void print_scheduling(struct schedulenode **scheduleList,int pnum)
 {
     int i;
     struct schedulenode *temp;
-    printf("Scheduling of tasks on each processors\n");
+    //printf("Scheduling of tasks on each processors\n");
     for(i=0;i<pnum;i++)
     {
         printf("%d: ",i+1);
         temp=scheduleList[i+1];
         while(temp)
         {
-            printf("%d (%lf,%lf)\t",temp->node_id,temp->start_time,temp->finish_time);
-            temp=temp->next;
+        //    printf("%d (%lf,%lf)\t",temp->node_id,temp->start_time,temp->finish_time);
+              temp=temp->next;
         }
-        printf("\n");
+        //printf("\n");
     }
 }
 
@@ -129,7 +129,7 @@ void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice
 {
     //printf("inside LTF_MFT\n%d\n",n);
     int n_schedule=0,i,select_t,select_p,n_free=0;
-    double max=0,min=100000000000000;
+    double max=0,min=1000000000000000000;
     double start_time[n],finish_time[n];
     struct node *temp;
     struct schedulenode *temp1;

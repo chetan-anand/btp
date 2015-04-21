@@ -168,7 +168,7 @@ void WaveFront(struct node **List,double *cost,int n,double *pspeed,double *ppri
 {
     //printf("inside WaveFront\n%d\n",n);
     int n_schedule=0,i,select_t,select_p;
-    double max=0,min=100000000000000000;
+    double max=0,min=1000000000000000000;
     double start_time[n],finish_time[n];
     struct node *temp;
     struct schedulenode *temp1;
@@ -334,8 +334,8 @@ void WaveFront(struct node **List,double *cost,int n,double *pspeed,double *ppri
     print_scheduleCost(pcost,pnum);
     cout<<" "<<num_nodes-2<<endl;
 
-    /*print_scheduling(scheduleList,pnum);
-    printf("\n");
+    print_scheduling(scheduleList,pnum);
+    /*printf("\n");
     printf("--------------------------------------------------------------------------------");*/
 }
 

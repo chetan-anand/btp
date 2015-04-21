@@ -285,7 +285,7 @@ void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice
     cout<<" "<<num_nodes-2<<endl;
 
 
-    //print_scheduling(scheduleList,pnum);
+    print_scheduling(scheduleList,pnum);
     //printf("\n");
     //printf("--------------------------------------------------------------------------------");
 }
