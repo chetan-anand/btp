@@ -329,14 +329,15 @@ void WaveFront(struct node **List,double *cost,int n,double *pspeed,double *ppri
 
     //printf("--------------------------------------------------------------------------------");
     //printf("\n");
+    cout<<num_nodes-2<<" ";
     print_scheduleLength(p_available,pnum);
     printf(" ");
     print_scheduleCost(pcost,pnum);
-    cout<<" "<<num_nodes-2<<endl;
+    //cout<<" "<<num_nodes-2<<endl;
 
-    print_scheduling(scheduleList,pnum);
-    /*printf("\n");
-    printf("--------------------------------------------------------------------------------");*/
+    //print_scheduling(scheduleList,pnum);
+    printf("\n");
+    /*printf("--------------------------------------------------------------------------------");*/
 }
 
 int main()

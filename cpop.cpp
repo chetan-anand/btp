@@ -213,20 +213,19 @@ double downward_rank(int root)
 
 void display()
 {
-    line;
+    //line;
     double make_span=0;
     double total_cost=0;
     for(int i=0;i<sch.size();i++)
     {
         make_span=max(make_span,sch[i].end);
-        cout<<"task ="<<sch[i].task<<" : processor ="<<sch[i].processor<<" : start="<<sch[i].start<<" : end="<<sch[i].end<<endl;
+        //cout<<"task ="<<sch[i].task<<" : processor ="<<sch[i].processor<<" : start="<<sch[i].start<<" : end="<<sch[i].end<<endl;
         double x=((sch[i].end-sch[i].start)*cores[sch[i].processor].cost);
-        cout<<"x="<<x<<endl;
+        //cout<<"x="<<x<<endl;
         total_cost= total_cost + ((sch[i].end-sch[i].start)*cores[sch[i].processor].cost);
     }
-    cout<<n<<" schedule length="<<make_span<<endl;
-    cout<<n<<" schedule cost="<<total_cost<<endl;
-    line;
+    cout<<n-2<<" "<<make_span<<" "<<total_cost<<endl;
+    //line;
 }
 
 /////////////////////////////////////////////////////////////
@@ -237,29 +236,29 @@ void heft_algo()
     
     upward_rank(1);
     
-    for(int i=1;i<=n;i++)
+    /*for(int i=1;i<=n;i++)
     {
         cout<<"i="<<i<<" ranku="<<nodes[i].ranku<<endl;
     }
-    line; 
+    line; */
     downward_rank(n);
     for(int i=1;i<=n;i++)
     {
         if(nodes[i].rankd==DBL_MIN){nodes[i].rankd=0.0;}
-        cout<<"i="<<i<<" rankd="<<nodes[i].rankd<<endl;
+        //cout<<"i="<<i<<" rankd="<<nodes[i].rankd<<endl;
         nodes[i].ranku+=nodes[i].rankd;
     }
-    line;
+    /*line;
     for(int i=1;i<=n;i++)
     {
         cout<<"i="<<i<<" ranku="<<nodes[i].ranku<<endl;
-    } 
+    } */
     int temp_root=1;
     priority_queue<struct node, vector<node>, Compare> pq;
     pq.push(nodes[temp_root]);
     nodes[temp_root].status=true;
     double costroot=nodes[1].ranku;
-    cout<<"costroot="<<costroot<<endl;
+    //cout<<"costroot="<<costroot<<endl;
     double make_span=0.0;
     while(!pq.empty())
     {
@@ -377,7 +376,7 @@ int main()
     inp1>>n;
     n=n+2;
     //n=5;
-    cout<<"Number of Nodes="<<n<<endl;
+    //cout<<"Number of Nodes="<<n<<endl;
     while(true)
     {
         int x,y;
@@ -399,7 +398,7 @@ int main()
     adj[4].push_back(5);*/
     
     populate_weight();
-    line;
+    //line;
 
     /*for(int i=1;i<=n;i++)
     {

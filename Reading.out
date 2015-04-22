@@ -20,6 +20,8 @@ codefire@hp:~/github/btp$ ./a.out
 158.500000 288.000000 10
 
 
+
+
 Num_nodes=50 no_child = 16 	test2.ip
 ---------------------------------------------------------------
 codefire@hp:~/github/btp$ g++ MixedMaxMin.cpp 

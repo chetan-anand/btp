@@ -101,7 +101,8 @@ int main()
 	
 	int tc;
 	//cout<<"Number of test cases to generate: ";
-	cin>>tc;
+	//cin>>tc;
+	tc=1;
 	//cout<<endl;
 	//cout<<"Enter number of task nodes: ";
 	cin>>nodesNum;

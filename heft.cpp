@@ -164,7 +164,7 @@ public:
 
 double upward_rank(int root)
 {
-    cout<<"hello"<<endl;
+    //cout<<"hello"<<endl;
     if(nodes[root].ranku>=0){return nodes[root].ranku;}
     if(adj[root].size()==0)
     {
@@ -187,20 +187,19 @@ double upward_rank(int root)
 
 void display()
 {
-    line;
+    //line;
     double make_span=0;
     double total_cost=0;
     for(int i=0;i<sch.size();i++)
     {
         make_span=max(make_span,sch[i].end);
-        cout<<"task ="<<sch[i].task<<" : processor ="<<sch[i].processor<<" : start="<<sch[i].start<<" : end="<<sch[i].end<<endl;
+        //cout<<"task ="<<sch[i].task<<" : processor ="<<sch[i].processor<<" : start="<<sch[i].start<<" : end="<<sch[i].end<<endl;
         double x=((sch[i].end-sch[i].start)*cores[sch[i].processor].cost);
-        cout<<"x="<<x<<endl;
+        //cout<<"x="<<x<<endl;
         total_cost= total_cost + ((sch[i].end-sch[i].start)*cores[sch[i].processor].cost);
     }
-    cout<<n<<" schedule length="<<make_span<<endl;
-    cout<<n<<" schedule cost="<<total_cost<<endl;
-    line;
+    cout<<n-2<<" "<<make_span<<" "<<total_cost<<endl;
+    //line;
 }
 
 /////////////////////////////////////////////////////////////
@@ -355,7 +354,7 @@ int main()
     inp1>>n;
     n=n+2;
     //n=5;
-    cout<<"Number of Nodes="<<n<<endl;
+    //cout<<"Number of Nodes="<<n<<endl;
     while(true)
     {
         int x,y;
@@ -376,7 +375,7 @@ int main()
     adj[4].push_back(5);*/
     
     populate_weight();
-    line;
+    //line;
 
     /*for(int i=1;i<=n;i++)
     {
