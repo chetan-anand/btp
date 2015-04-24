@@ -5,3 +5,16 @@ Parameters
 3. Change in speed of processors
 4. Change in cost of proccessors
 5. Change in cost policy of proccessors
+
+Dag Gen
+---------------------------------------------------------
+RANDOM DAG GENERATOR
+-----------------------------------------------------------
+The experiment part require a generated DAG graph .
+
+
+How we have implement random DAG generator
+-----------------------------------------------------------
+For dag generation, we have taken two parameters to control the characteristics of the output dag.
+First is total number of nodes and the other is upper bound on number children of a node.
+We have run two for loops with one loop inside another. The outer loop goes from 1 to num_of_nodes and the iner loop goes from .Now this operation will ensure that there is no cycle formed in the graph to make it a n acyclis graph.
