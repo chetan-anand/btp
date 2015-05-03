@@ -164,9 +164,9 @@ void Sort_a_on_cost(int *arr,double *cost,int n)
 
 }
 
-void WaveFront(struct node **List,double *cost,int n,double *pspeed,double *pprice,int pnum)
+void min_cost(struct node **List,double *cost,int n,double *pspeed,double *pprice,int pnum)
 {
-    //printf("inside WaveFront\n%d\n",n);
+    //printf("inside min_cost\n%d\n",n);
     int n_schedule=0,i,select_t,select_p;
     double max=0,min=1000000000000000000;
     double start_time[n],finish_time[n];
@@ -437,7 +437,7 @@ int main()
         //scanf("%lf",&pprice[i]);
     }
     inp1.close();
-    WaveFront(List,cost,num_nodes,pspeed,pprice,pnum);
+    min_cost(List,cost,num_nodes,pspeed,pprice,pnum);
 
     return 0;
 }

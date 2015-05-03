@@ -1,6 +1,0 @@
-# depslib dependency file v1.0
-1428697288 source:c:\acad\7th sem\btp\implementation\pricemaxmin\main.c
-	<stdio.h>
-	<stdlib.h>
-	<limits.h>
-

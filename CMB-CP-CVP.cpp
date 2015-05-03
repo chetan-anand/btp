@@ -129,9 +129,9 @@ void print_scheduling(struct schedulenode **scheduleList,int pnum)
     }
 }
 
-void LTF_MFT(struct node **List,double *cost,int n,double *pspeed,double *pprice,int pnum)
+void balance1(struct node **List,double *cost,int n,double *pspeed,double *pprice,int pnum)
 {
-    //printf("inside LTF_MFT\n%d\n",n);
+    //printf("inside CMB-CP-CVP\n%d\n",n);
     int n_schedule=0,i,select_t,select_p,n_free=0;
     double max=0,min=1000000000000000000;
     double start_time[n],finish_time[n];
@@ -387,6 +387,6 @@ int main()
         //cout<<"price="<<pprice[i]<<endl;
     }
     inp1.close();
-    LTF_MFT(List,cost,num_nodes,pspeed,pprice,pnum);
+    balance1(List,cost,num_nodes,pspeed,pprice,pnum);
     return 0;
 }
